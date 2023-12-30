@@ -11,9 +11,16 @@ public class NumberGuessingGame {
         Random random = new Random();
         int number = random.nextInt(100) + 1;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("I have a number in mind. What is your guess?");
-        int guess = scanner.nextInt();
         int numberofguesses = 0;
+        System.out.println("I have a number in mind. What is your guess?");
+        int guess = 0;
+        try {
+            guess = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Please enter a whole number.");
+            numberofguesses--;
+            scanner.next();
+        }
 
         while (number != guess) {
             if (number > guess) {
